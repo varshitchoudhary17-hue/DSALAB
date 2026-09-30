@@ -6,7 +6,7 @@ struct Node {
     struct Node *next;
 };
 
-// Insert at beginning
+
 struct Node* insertBeginning(struct Node* head, int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
 
@@ -16,7 +16,6 @@ struct Node* insertBeginning(struct Node* head, int data) {
     return newNode;
 }
 
-// Insert at end
 struct Node* insertEnd(struct Node* head, int data) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -37,7 +36,7 @@ struct Node* insertEnd(struct Node* head, int data) {
     return head;
 }
 
-// Insert at a given position
+
 struct Node* insertPosition(struct Node* head, int data, int position) {
     struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
     newNode->data = data;
@@ -65,7 +64,7 @@ struct Node* insertPosition(struct Node* head, int data, int position) {
     return head;
 }
 
-// Display linked list
+
 void display(struct Node* head) {
     struct Node* temp = head;
 
