@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX 100
+
+char stack[MAX][MAX];
+int top = -1;
+
+void push(char str[])
+{
+    top++;
+    strcpy(stack[top], str);
+}
+
+void pop(char str[])
+{
+    strcpy(str, stack[top]);
+    top--;
+}
+
+int main()
+{
+    char prefix[MAX];
+    char op1[MAX], op2[MAX], temp[MAX];
+    int i;
+
+    printf("BRO!!  Enter prefix expression: ");
+    scanf("%s", prefix);
+
+    for (i = strlen(prefix) - 1; i >= 0; i--)
+    {
+        if (isalnum(prefix[i]))
+        {
+            temp[0] = prefix[i];
+            temp[1] = '\0';
+            push(temp);
+        }
+        else
+        {
+            pop(op1);
+            pop(op2);
+
+            strcpy(temp, "(");
+            strcat(temp, op1);
+
+            temp[strlen(temp) + 1] = '\0';
+            temp[strlen(temp)] = prefix[i];
+
+            strcat(temp, op2);
+            strcat(temp, ")");
+
+            push(temp);
+        }
+    }
+
+    pop(temp);
+
+    printf("BRO!!  Infix expression: %s\n", temp);
+
+    return 0;
+}
