@@ -37,7 +37,7 @@ int main()
     int i, j = 0;
     char ch;
 
-    printf("Enter an infix expression: ");
+    printf("BRO!! Enter an infix expression: ");
     scanf("%s", infix);
 
     for (i = 0; infix[i] != '\0'; i++)
@@ -86,7 +86,7 @@ int main()
 
     postfix[j] = '\0';
 
-    printf("Postfix expression: %s\n", postfix);
+    printf("CONGRATS!! Postfix expression: %s\n", postfix);
 
     return 0;
 }
