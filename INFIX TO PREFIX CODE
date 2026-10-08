@@ -1,26 +1,20 @@
 #include <stdio.h>
 #include <ctype.h>
-
 #define SIZE 50
 
 char stack[SIZE];
 int top = -1;
 
-void push(char x)
-{
+void push(char x){
     top++;
     stack[top] = x;
 }
-
-char pop()
-{
+char pop(){
     char x = stack[top];
     top--;
     return x;
 }
-
-int priority(char x)
-{
+int priority(char x){
     if (x == '^')
         return 3;
     else if (x == '*' || x == '/')
@@ -30,9 +24,7 @@ int priority(char x)
     else
         return 0;
 }
-
-int main()
-{
+int main(){
     char infix[SIZE], postfix[SIZE];
     int i, j = 0;
     char ch;
@@ -40,23 +32,18 @@ int main()
     printf("BRO!! Enter an infix expression: ");
     scanf("%s", infix);
 
-    for (i = 0; infix[i] != '\0'; i++)
-    {
+    for (i = 0; infix[i] != '\0'; i++){
         ch = infix[i];
 
-        if (isalnum(ch))
-        {
+        if (isalnum(ch)){
             postfix[j] = ch;
             j++;
         }
-        else if (ch == '(')
-        {
+        else if (ch == '('){
             push(ch);
         }
-        else if (ch == ')')
-        {
-            while (top != -1 && stack[top] != '(')
-            {
+        else if (ch == ')'){
+            while (top != -1 && stack[top] != '('){
                 postfix[j] = pop();
                 j++;
             }
@@ -64,8 +51,7 @@ int main()
             if (top != -1)
                 pop();
         }
-        else
-        {
+        else{
             while (top != -1 &&
                    stack[top] != '(' &&
                    priority(stack[top]) >= priority(ch))
